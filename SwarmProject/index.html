@@ -24,13 +24,13 @@ var width = 1500,
     angle = 2 * Math.PI;
 
 // -5, 5
-// 0, width
+// 0, width <<<>>>
 var x = d3.scale.linear()
     .domain([-4, 4])
     .range([0, width]);
 
 // -5, 5
-// 0, width
+// 0, width  <<<<>>>
 var y = d3.scale.linear()
     .domain([-5, 5])
     .range([0, height]);
@@ -51,12 +51,12 @@ context.strokeWidth = 1.5;
 
 d3.timer(function() {
   context.clearRect(0, 0, width, height);
-// default 0.05
+// default 0.05 <<<>>> 
   data.forEach(function(d) {
     d.xloc += d.xvel;
     d.yloc += d.yvel;
-    d.xvel += 0.04 * (Math.random() - .5) - 0.05 * d.xvel - 0.0005 * d.xloc;
-    d.yvel += 0.04 * (Math.random() - .5) - 0.05 * d.yvel - 0.0005 * d.yloc;
+    d.xvel += 0.03 * (Math.random() - .5) - 0.05 * d.xvel - 0.0005 * d.xloc;
+    d.yvel += 0.03 * (Math.random() - .5) - 0.05 * d.yvel - 0.0005 * d.yloc;
     context.beginPath();
     context.arc(x(d.xloc), y(d.yloc), Math.min(1 + 1000 * Math.abs(d.xvel * d.yvel), 10), 0, angle);
     context.fill();
