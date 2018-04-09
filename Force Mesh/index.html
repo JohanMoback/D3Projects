@@ -28,7 +28,7 @@ var links = voronoi.links(nodes);
 var canvas = d3.select("body").append("canvas")
     .attr("width", width)
     .attr("height", height)
-    .on("ontouchstart", in document ? "touchmove" : "mousemove", moved); 
+    .on("ontouchstart", document ? "touchmove" : "mousemove", moved); 
 
 var context = canvas.node().getContext("2d"); 
 
