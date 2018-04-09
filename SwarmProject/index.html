@@ -13,18 +13,24 @@ canvas {
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var data = d3.range(500).map(function() {
+var data = d3.range(1000).map(function() {
   return {xloc: 0, yloc: 0, xvel: 0, yvel: 0};
 });
 
-var width = 960,
-    height = 500,
+
+// default width:960 height:500 
+var width = 1500,
+    height = 1000,
     angle = 2 * Math.PI;
 
+// -5, 5
+// 0, width
 var x = d3.scale.linear()
-    .domain([-5, 5])
+    .domain([-4, 4])
     .range([0, width]);
 
+// -5, 5
+// 0, width
 var y = d3.scale.linear()
     .domain([-5, 5])
     .range([0, height]);
@@ -39,13 +45,13 @@ var canvas = d3.select("body").append("canvas")
     .attr("height", height);
 
 var context = canvas.node().getContext("2d");
-context.fillStyle = "steelblue";
-context.strokeStyle = "#666";
+context.fillStyle = "#FFA500";
+context.strokeStyle = "#7CFC00";
 context.strokeWidth = 1.5;
 
 d3.timer(function() {
   context.clearRect(0, 0, width, height);
-
+// default 0.05
   data.forEach(function(d) {
     d.xloc += d.xvel;
     d.yloc += d.yvel;

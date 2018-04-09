@@ -22,7 +22,8 @@ circle {
 var width = 960,
     height = 500;
 
-var velocity = [-.003, .003];
+// default -.003 
+var velocity = [-.050, .050];
 
 var projection = d3.geo.orthographic()
     .scale(240);
@@ -37,11 +38,13 @@ var svg = d3.select("body").append("svg")
 var feature = svg.append("path")
     .datum(d3.geodesic.multilinestring(8));
 
+// r:240 cx:2 cy: 2
 svg.append("circle")
     .attr("r", 240)
     .attr("cx", width / 2)
     .attr("cy", height / 2);
 
+// velocity:0/1 
 d3.timer(function(elapsed) {
   projection.rotate([elapsed * velocity[0], elapsed * velocity[1]]);
   feature.attr("d", path);
